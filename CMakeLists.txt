@@ -11,7 +11,7 @@ SET(CMAKE_CXX_STANDARD 17)
 add_library(ips2ra INTERFACE)
 target_include_directories(ips2ra INTERFACE include/)
 add_subdirectory(extern/tlx)
-link_libraries(ips2ra tlx)
+target_link_libraries(ips2ra INTERFACE tlx)
 
 option(IPS2RA_OPTIMIZE_FOR_NATIVE "Build with -march=native" ON)
 if (IPS2RA_OPTIMIZE_FOR_NATIVE)
