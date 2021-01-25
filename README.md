@@ -98,12 +98,12 @@ You can disable the CMake property `IPS2RA_OPTIMIZE_FOR_NATIVE` to avoid native 
 
 IPS²Ra uses C++ threads if not specified otherwise.
 If you prefer OpenMP threads, you need to enable OpenMP threads, e.g., enable the CMake property `IPS2RA_USE_OPENMP` or add OpenMP to your target.
-If you enable the CMake property `DISABLE_IPS2RA_PARALLEL`, most of the parallel code will not be compiled and no parallel libraries will be linked.
+If you enable the CMake property `IPS2RA_DISABLE_PARALLEL`, most of the parallel code will not be compiled and no parallel libraries will be linked.
 Otherwise, CMake automatically enables C++ threads (e.g., `-pthread`) and links against TBB and GCC's libatomic. (Only when you compile your code for 16-byte compare-and-exchange instructions you need libatomic.)
 Thus, you need the Thread Building Blocks (TBB) library to compile and execute the parallel version of IPS²Ra.
 We search for TBB with `find_package(TBB REQUIRED)`.
 If you want to execute IPS²Ra in parallel but your TBB library is not accessible via `find_package(TBB REQUIRED)`, you can still compile IPS²Ra with parallel support. 
-Just enable the CMake property `DISABLE_IPS2RA_PARALLEL`, enable C++ threads for your own target and link your own target against your TBB library (and also link your target against libatomic if you want 16-byte atomic compare-and-exchange instruction support).
+Just enable the CMake property `IPS2RA_DISABLE_PARALLEL`, enable C++ threads for your own target and link your own target against your TBB library (and also link your target against libatomic if you want 16-byte atomic compare-and-exchange instruction support).
 
 If you do not set a CMake build type, we use the build type `Release` which disables debugging (e.g., `-DNDEBUG`) and enables optimizations (e.g., `-O3`).
 
